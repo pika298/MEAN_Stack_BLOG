@@ -2,6 +2,8 @@
 
 module.exports = function(app) {
 	var categories = require('../../app/controllers/categories.server.controller');
+	// User Authentication
+	var users = require('../../app/controllers/users.server.controller');
 	
 	app.route('/categories')
 		.get(categories.list)

@@ -1,6 +1,6 @@
 'use strict';
 
-// Categories module config
+// Configuring the Articles module
 angular.module('categories').run(['Menus',
 	function(Menus) {
 		// Set top bar menu items

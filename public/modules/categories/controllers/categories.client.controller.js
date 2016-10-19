@@ -4,6 +4,14 @@
 angular.module('categories').controller('CategoriesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Categories',
 	function($scope, $stateParams, $location, Authentication, Categories) {
 		$scope.authentication = Authentication;
+	  	$scope.currentPage = 1;
+	  	$scope.pageSize = 10;
+	  	$scope.offset = 0;
+
+	   // Page changed handler
+	   $scope.pageChanged = function() {
+	  		$scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
+	   };
 
 		// Create new Category
 		$scope.create = function() {
@@ -62,6 +70,11 @@ angular.module('categories').controller('CategoriesController', ['$scope', '$sta
 			$scope.category = Categories.get({ 
 				categoryId: $stateParams.categoryId
 			});
+		};
+
+		// Search for a category
+		$scope.categorySearch = function(product) {
+			$location.path('categories/' + product._id);
 		};
 	}
 ]);
